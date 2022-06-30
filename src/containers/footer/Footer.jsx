@@ -11,7 +11,7 @@ const Footer = () => {
           <p>Trailerama, <br /> All Rights Reserved</p>
         </div>
         <div className="cataloguefooter-links_div">
-          <h4>Links</h4>
+          <h1>Links</h1>
           <p>
             <a target="_blank" rel="noreferrer" href="https://trailerama.herokuapp.com/">Trailerama Laravel</a>
           </p>

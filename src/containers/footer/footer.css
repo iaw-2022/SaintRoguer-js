@@ -49,7 +49,7 @@
     flex-direction: column;
 }
 
-.cataloguefooter-links_div h4 {
+.cataloguefooter-links_div h1 {
     font-size: 14px;
     line-height: 17px;
     font-family: var(--font-family);

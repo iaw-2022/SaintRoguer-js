@@ -15,7 +15,19 @@ const Carrousel = () => {
     const [autoPlay, setAutoPlay] = useState(true)
     const [showButtons, setShowButtons] = useState(false)
 
-
+    const CarouselButton = styled.button`
+    padding: 0.5rem 1rem;
+    color: black;
+    background: ${showButtons ? '#8db600' : '#526a00'};
+    font-family: var(--font-family);
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    `;
 
     useEffect(() => {
         if (autoPlay || !showButtons) {
@@ -59,6 +71,9 @@ const Carrousel = () => {
         loadMovies()
 
     }, [])
+
+    //on Click disable buttons
+
     if (isLoading)
         return <Loading />
 
@@ -70,28 +85,18 @@ const Carrousel = () => {
             <CarrouselItem item={movies[selectedIndex]} loaded={loaded} setLoaded={setLoaded} />
             <div>
                 <CarouselButtonContainer>
-                    {showButtons ? (
-                        <>
-                            <CarouselButton onClick={previous}>{"<"}</CarouselButton>
-                            <CarouselButton onClick={next}>{">"}</CarouselButton>
 
-                        </>
-                    ) : (
-                        <></>
-                    )}
+
+                    <CarouselButton disabled={!showButtons} onClick={previous}>{"<"}</CarouselButton>
+                    <CarouselButton disabled={!showButtons} onClick={next}>{">"}</CarouselButton>
+
+
+
                 </CarouselButtonContainer>
                 <CarouselButtonContainer>
-                    {autoPlay ? (
-                        <div className='carrousel-button'>
-                            <CarouselButton type="button" onClick={autoplayChange}>{"Stop Autoplay"}</CarouselButton>
-                        </div>
-                    ) :
-                        (
-                            <>
-                                <CarouselButton type="button" onClick={autoplayChange}>{"Start Autoplay"}</CarouselButton>
-
-                            </>
-                        )}
+                    <div className='carrousel-button'>
+                        <CarouselButton type="button" onClick={autoplayChange}>{"Switch Autoplay"}</CarouselButton>
+                    </div>
                 </CarouselButtonContainer>
             </div>
         </div>
@@ -108,16 +113,3 @@ const CarouselButtonContainer = styled.div`
   margin-top: 15px;
 `;
 
-const CarouselButton = styled.button`
-padding: 0.5rem 1rem;
-color: black;
-background: #8db600;
-font-family: var(--font-family);
-font-weight: 900;
-font-size: 18px;
-line-height: 25px;
-border: none;
-outline: none;
-cursor: pointer;
-border-radius: 5px;
-`;
