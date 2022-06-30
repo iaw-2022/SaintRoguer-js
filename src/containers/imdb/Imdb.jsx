@@ -49,12 +49,12 @@ const Imdb = () => {
 
   useEffect(() => {
     function filter() {
-      const filteredMovies = movies.filter(movie => movie.FullTitle.toLowerCase().includes(searchValue.toLowerCase()))
+      const filteredMovies = movies.filter(movie => movie.fullTitle.toLowerCase().includes(searchValue.toLowerCase()))
       setMovies(filteredMovies)
     }
 
     function recaulculate() {
-      const filteredMovies = auxMovies.filter(movie => movie.FullTitle.toLowerCase().includes(searchValue.toLowerCase()))
+      const filteredMovies = auxMovies.filter(movie => movie.fullTitle.toLowerCase().includes(searchValue.toLowerCase()))
       setMovies(filteredMovies)
     }
 

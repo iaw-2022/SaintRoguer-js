@@ -5,8 +5,6 @@ import './modal.css';
 
 const Modal = ({ isOpen, setIsOpen, active }) => {
     function changeState() {
-        console.log('changeState');
-        console.log(isOpen);
         setIsOpen(!isOpen);
     }
 
