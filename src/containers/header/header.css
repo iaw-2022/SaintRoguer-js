@@ -1,0 +1,66 @@
+.catalogueheader {
+    display: flex;
+    flex-direction: row;
+}
+
+.catalogueheader-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    margin-right: 5rem;
+}
+
+.catalogueheader-content h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
+
+.catalogueheader-content p {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--color-text);
+
+    margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 1050px) {
+    .catalogueheader {
+        flex-direction: column;
+    }
+
+    .catalogueheader-content {
+        margin: 0 0 3rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .catalogueheader-content h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+
+    .catalogueheader-content p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .catalogueheader-content h1 {
+        font-size: 36px;
+        line-height: 48px;
+    }
+
+    .catalogueheader-content p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
