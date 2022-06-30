@@ -10,16 +10,12 @@ const CarrouselItem = (props) => {
 
     return (
         <div key={item.title} className='catalogueheader section__padding'>
-
             <div className="catalogueheader-content">
                 <h1 className='gradient__text'>  {item.title} </h1>
-
                 <p>
                     {item.plot}
 
                 </p>
-
-
             </div>
             <div className="catalogueheader-image">
                 <CarouselImg
@@ -28,8 +24,8 @@ const CarrouselItem = (props) => {
                     height="321"
                     width="216"
                     className={loaded ? "loaded" : ""}
-                    onLoad={() => setLoaded(true)} 
-                    /> :
+                    onLoad={() => setLoaded(true)}
+                /> :
             </div>
         </div>
 
@@ -37,7 +33,6 @@ const CarrouselItem = (props) => {
 }
 
 export default CarrouselItem
-
 
 const CarouselImg = styled.img`
   max-width: 500px;
