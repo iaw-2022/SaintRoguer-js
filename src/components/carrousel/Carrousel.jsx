@@ -15,7 +15,7 @@ const Carrousel = () => {
     const [autoPlay, setAutoPlay] = useState(true)
     const [showButtons, setShowButtons] = useState(false)
 
-    
+
 
     useEffect(() => {
         if (autoPlay || !showButtons) {
@@ -68,7 +68,7 @@ const Carrousel = () => {
     return (
         <div>
             <CarrouselItem item={movies[selectedIndex]} loaded={loaded} setLoaded={setLoaded} />
-            <div className='carrousel-button'>
+            <div>
                 <CarouselButtonContainer>
                     {showButtons ? (
                         <>
@@ -82,13 +82,13 @@ const Carrousel = () => {
                 </CarouselButtonContainer>
                 <CarouselButtonContainer>
                     {autoPlay ? (
-                        <>
-                            <CarouselButton onClick={autoplayChange}>{"Stop Autoplay"}</CarouselButton>
-                        </>
+                        <div className='carrousel-button'>
+                            <CarouselButton type="button" onClick={autoplayChange}>{"Stop Autoplay"}</CarouselButton>
+                        </div>
                     ) :
                         (
                             <>
-                                <CarouselButton onClick={autoplayChange}>{"Start Autoplay"}</CarouselButton>
+                                <CarouselButton type="button" onClick={autoplayChange}>{"Start Autoplay"}</CarouselButton>
 
                             </>
                         )}
@@ -109,8 +109,15 @@ const CarouselButtonContainer = styled.div`
 `;
 
 const CarouselButton = styled.button`
-  color: white;
-  background-color: #eb118a;
-  padding: 8px;
-  margin: 0 5px;
+padding: 0.5rem 1rem;
+color: black;
+background: #8db600;
+font-family: var(--font-family);
+font-weight: 900;
+font-size: 18px;
+line-height: 25px;
+border: none;
+outline: none;
+cursor: pointer;
+border-radius: 5px;
 `;

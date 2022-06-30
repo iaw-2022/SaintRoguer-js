@@ -53,7 +53,7 @@ height: 100%;
 position: fixed;
 top: 0;
 left: 0;
-background-color: rgba(0,0,0,1);
+background-color: rgba(0,0,0,0.93);
 padding: 40px;
 display: flex;
 align-items: center;
@@ -66,6 +66,7 @@ const ModalContainer = styled.div`
 width: 500px;
 min-height: 100px;
 bg-color: #fff;
+top: 300px;
 position: relative;
 border-radius: 5px;
 box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;

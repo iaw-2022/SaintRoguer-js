@@ -1,6 +1,6 @@
 .row__poster {
     object-fit: contain;
-    max-width: auto;
+    max-width: 216px;
     height: auto;
     margin-right: 10px;
     transition: transform 450ms;
