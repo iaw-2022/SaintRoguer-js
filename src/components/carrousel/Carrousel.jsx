@@ -17,7 +17,7 @@ const Carrousel = () => {
 
     const CarouselButton = styled.button`
     padding: 0.5rem 1rem;
-    color: black;
+    color: ${showButtons ? '#000000' : '#ffeb3b'};
     background: ${showButtons ? '#8db600' : '#526a00'};
     font-family: var(--font-family);
     font-weight: 900;
