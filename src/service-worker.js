@@ -51,3 +51,19 @@ self.addEventListener("message", (event) => {
         self.skipWaiting();
     }
 });
+
+registerRoute(
+    new RegExp('https://trailerama-api.herokuapp.com/(.*)'),
+    workbox.strategies.cacheFirst({
+        cacheName: 'api-data',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 200
+            })
+        ],
+        method: 'GET',
+        cacheableResponse: {
+            statuses: [0, 200]
+        }
+    })
+)
