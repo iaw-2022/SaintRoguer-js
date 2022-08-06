@@ -3,7 +3,7 @@ import { clientsClaim } from "workbox-core";
 import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-import { StaleWhileRevalidate } from "workbox-strategies";
+import { StaleWhileRevalidate, CacheFirst } from "workbox-strategies";
 
 clientsClaim();
 
@@ -54,11 +54,12 @@ self.addEventListener("message", (event) => {
 
 registerRoute(
     new RegExp('https://trailerama-api.herokuapp.com/(.*)'),
-    workbox.strategies.cacheFirst({
+    new CacheFirst({
         cacheName: 'api-data',
         plugins: [
-            new workbox.expiration.Plugin({
-                maxEntries: 200
+            new ExpirationPlugin({
+                maxEntries: 200,
+                maxAgeSeconds: 15 * 24 * 60 * 60
             })
         ],
         method: 'GET',
