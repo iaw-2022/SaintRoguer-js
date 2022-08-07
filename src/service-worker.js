@@ -14,10 +14,10 @@ precacheAndRoute(self.__WB_MANIFEST);
 // const desactivarPrecache = self.__WB_MANIFEST;
 // para más info: https://cra.link/PWA
 
-const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$");
+/*const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$");
 registerRoute(
     // Return false to exempt requests from being fulfilled by index.html.
-    /*({ request, url }) => {
+    /{ request, url }) => {
         // If this isn't a navigation, skip.
         if (request.mode !== "navigate") {
             return false;
@@ -29,11 +29,11 @@ registerRoute(
             return false;
             } // Return true to signal that we want to use the handler.
         return true;
-    },*/
+    },
     createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html")
 );
 //Cache all images
-
+*/
 
 /*
 
