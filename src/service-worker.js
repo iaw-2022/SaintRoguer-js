@@ -11,7 +11,7 @@ precacheAndRoute(self.__WB_MANIFEST);
 registerRoute(
     // Custom `matchCallback` function
     ({ event }) => event.request.destination === 'image',
-    new workbox.strategies.CacheFirst({
+    new CacheFirst({
         cacheName: 'image',
         plugins: [
             new CacheableResponsePlugin({ statuses: [200] }),
