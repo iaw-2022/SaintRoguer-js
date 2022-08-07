@@ -19,6 +19,7 @@ const CarrouselItem = (props) => {
             </div>
             <div className="catalogueheader-image">
                 <CarouselImg
+                    crossorigin="anonymous"
                     src={imageRoute}
                     alt={item.title + " poster"}
                     height="321"

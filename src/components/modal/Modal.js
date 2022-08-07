@@ -18,7 +18,8 @@ const Modal = ({ isOpen, setIsOpen, active }) => {
                         </ModalHeader>
                         <CloseButton onClick={() => changeState()}><h1>X</h1></CloseButton>
                         <Content>
-                            <img className='row__poster'
+                            <img crossorigin="anonymous"
+                                className='row__poster'
                                 src={active.slug ? process.env.REACT_APP_BASE_URL + `/arts/${active.slug}/image` : active.image}
                                 height="216" width="321"
                                 alt={active.title + ' poster'} />

@@ -22,7 +22,8 @@ const MovieList = (props) => {
     <>
       {props.movies.map((movie, index) =>
         <div key={movie.slug ? movie.slug : movie.id} className='div__poster' >
-          <img className='row__poster'
+          <img crossorigin="anonymous"
+            className='row__poster'
             src={movie.slug ? process.env.REACT_APP_BASE_URL + `/arts/${movie.slug}/image` : movie.image}
             height="216" width="321"
             alt={movie.title}
