@@ -3,7 +3,8 @@ import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
 import { CacheFirst } from "workbox-strategies";
-
+import { CacheableResponsePlugin } from "workbox-cacheable-response";
+import { RangeRequestsPlugin } from "workbox-range-requests";
 // Puedes desactivar el precaching reemplazand esta línea
 precacheAndRoute(self.__WB_MANIFEST);
 
@@ -13,9 +14,9 @@ registerRoute(
     new workbox.strategies.CacheFirst({
         cacheName: 'image',
         plugins: [
-            new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [200] }),
-            new workbox.rangeRequests.RangeRequestsPlugin(),
-            new workbox.expiration.Plugin({
+            new CacheableResponsePlugin({ statuses: [200] }),
+            new RangeRequestsPlugin(),
+            new ExpirationPlugin({
                 maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
             }),
         ],
