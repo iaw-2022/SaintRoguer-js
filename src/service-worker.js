@@ -33,6 +33,11 @@ registerRoute(
     createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html")
 );
 
+//Cache all images
+
+
+
+
 registerRoute(
     // Add in any other file extensions or routing criteria as needed.
     ({ url }) =>
@@ -46,11 +51,6 @@ registerRoute(
         ],
     })
 );
-self.addEventListener("message", (event) => {
-    if (event.data && event.data.type === "SKIP_WAITING") {
-        self.skipWaiting();
-    }
-});
 
 registerRoute(
     new RegExp('https://trailerama-api.herokuapp.com/(.*)'),
@@ -67,5 +67,29 @@ registerRoute(
             statuses: [0, 200]
         }
     })
-
 );
+
+registerRoute(
+    new RegExp('https://imdb-api.com/(.*)'),
+    new CacheFirst({
+        cacheName: 'IMDB-data',
+        plugins: [
+            new ExpirationPlugin({
+                maxEntries: 200,
+                maxAgeSeconds: 15 * 24 * 60 * 60
+            })
+        ],
+        method: 'GET',
+        cacheableResponse: {
+            statuses: [0, 200]
+        }
+    })
+);
+
+
+self.addEventListener("message", (event) => {
+    if (event.data && event.data.type === "SKIP_WAITING") {
+        self.skipWaiting();
+    }
+});
+
