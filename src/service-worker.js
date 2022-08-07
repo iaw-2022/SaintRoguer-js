@@ -54,7 +54,7 @@ registerRoute(
 */
 
 registerRoute(
-    ({ request }) => request.destination === 'image',
+    ({ event }) => event.request.destination === 'image',
     new CacheFirst({
         cacheName: 'images',
         plugins: [
@@ -72,7 +72,6 @@ registerRoute(
         cacheName: 'api-data',
         plugins: [
             new ExpirationPlugin({
-                maxEntries: 200,
                 maxAgeSeconds: 15 * 24 * 60 * 60
             })
         ],
@@ -89,7 +88,6 @@ registerRoute(
         cacheName: 'IMDB-data',
         plugins: [
             new ExpirationPlugin({
-                maxEntries: 200,
                 maxAgeSeconds: 15 * 24 * 60 * 60
             })
         ],
