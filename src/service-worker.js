@@ -14,43 +14,8 @@ precacheAndRoute(self.__WB_MANIFEST);
 // const desactivarPrecache = self.__WB_MANIFEST;
 // para más info: https://cra.link/PWA
 
-const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$");
-registerRoute(
-    // Return false to exempt requests from being fulfilled by index.html.
-    ({ request, url }) => {
-        // If this isn't a navigation, skip.
-        if (request.mode !== "navigate") {
-            return false;
-        } // If this is a URL that starts with /\_, skip.
-        if (url.pathname.startsWith("/_")) {
-            return false;
-        } // If this looks like a URL for a resource, because it contains // a file extension, skip.
-        if (url.pathname.match(fileExtensionRegexp)) {
-            return true;
-        } // Return true to signal that we want to use the handler.
-        return true;
-    },
-    createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html")
-);
-//Cache all images
 
 
-/*
-
-registerRoute(
-    // Add in any other file extensions or routing criteria as needed.
-    ({ url }) =>
-        url.origin === self.location.origin && (url.pathname.endsWith(".png") || url.pathname.endsWith(".jpg")), // Customize this strategy as needed, e.g., by changing to CacheFirst.
-    new StaleWhileRevalidate({
-        cacheName: "images",
-        plugins: [
-            // Ensure that once this runtime cache reaches a maximum size the
-            // least-recently used images are removed.
-            new ExpirationPlugin({ maxAgeSeconds: 60 * 60 * 24 * 15 }),
-        ],
-    })
-);
-*/
 registerRoute(
     ({ event }) => event.request.destination === 'image',
     new CacheFirst({
@@ -62,7 +27,6 @@ registerRoute(
         ],
     })
 );
-
 
 registerRoute(
     new RegExp('https://trailerama-api.herokuapp.com/(.*)'),
@@ -95,6 +59,48 @@ registerRoute(
         }
     })
 );
+
+
+const fileExtensionRegexp = new RegExp("/[^/?]+\\.[^/]+$");
+registerRoute(
+    // Return false to exempt requests from being fulfilled by index.html.
+    ({ request, url }) => {
+        // If this isn't a navigation, skip.
+        if (request.mode !== "navigate") {
+            return false;
+        } // If this is a URL that starts with /\_, skip.
+        if (url.pathname.startsWith("/_")) {
+            return false;
+        } // If this looks like a URL for a resource, because it contains // a file extension, skip.
+        if (url.pathname.match(fileExtensionRegexp)) {
+            return false;
+        } // Return true to signal that we want to use the handler.
+        return true;
+    },
+    createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html")
+);
+//Cache all images
+
+
+/*
+
+registerRoute(
+    // Add in any other file extensions or routing criteria as needed.
+    ({ url }) =>
+        url.origin === self.location.origin && (url.pathname.endsWith(".png") || url.pathname.endsWith(".jpg")), // Customize this strategy as needed, e.g., by changing to CacheFirst.
+    new StaleWhileRevalidate({
+        cacheName: "images",
+        plugins: [
+            // Ensure that once this runtime cache reaches a maximum size the
+            // least-recently used images are removed.
+            new ExpirationPlugin({ maxAgeSeconds: 60 * 60 * 24 * 15 }),
+        ],
+    })
+);
+*/
+
+
+
 
 
 self.addEventListener("message", (event) => {
