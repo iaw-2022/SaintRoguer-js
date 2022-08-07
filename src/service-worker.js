@@ -36,7 +36,7 @@ registerRoute(
 //Cache all images
 
 
-
+/*
 
 registerRoute(
     // Add in any other file extensions or routing criteria as needed.
@@ -51,6 +51,20 @@ registerRoute(
         ],
     })
 );
+*/
+
+registerRoute(
+    ({ request }) => request.destination === 'image',
+    new CacheFirst({
+        cacheName: 'images',
+        plugins: [
+            new ExpirationPlugin({
+                maxAgeSeconds: 60 * 60 * 24 * 15,
+            }),
+        ],
+    })
+);
+
 
 registerRoute(
     new RegExp('https://trailerama-api.herokuapp.com/(.*)'),
