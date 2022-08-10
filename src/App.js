@@ -25,25 +25,25 @@ function App() {
   }
 
   React.useEffect(() => {
-    login().then(() => activateMessages()));
-  onMessage(messaging, message => {
-    console.log("Message received: ", message);
-    toast(message.notification.title)
-  })
-}, [])
+    login().then(() => activateMessages());
+    onMessage(messaging, message => {
+      console.log("Message received: ", message);
+      toast(message.notification.title)
+    })
+  }, [])
 
-return (
-  <div className='App'>
-    <div className='gradient__bg'>
-      <Navbar />
-      <ToastContainer />
-      <Header />
+  return (
+    <div className='App'>
+      <div className='gradient__bg'>
+        <Navbar />
+        <ToastContainer />
+        <Header />
+      </div>
+      <Catalogue />
+      <Imdb />
+      <Footer />
     </div>
-    <Catalogue />
-    <Imdb />
-    <Footer />
-  </div>
-);
+  );
 }
 
 export default App;
