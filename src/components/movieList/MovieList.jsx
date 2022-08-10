@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import './movieList.css'
 
 const MovieList = (props) => {
@@ -9,14 +8,6 @@ const MovieList = (props) => {
     props.setIsOpen(!props.isOpen);
     props.setActive(movie)
   }
-
-  /*
-    async function getImageFromSlug(slug) {
-      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/arts/${slug}/image`)
-      //var algo = await URL.createObjectURL(new Blob([res.data]))
-      console.log("axios get : ", res.data)
-      return res.data
-    }*/
 
   return (
     <>

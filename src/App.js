@@ -33,7 +33,7 @@ function App() {
         toast(message.notification.title)
       })
     }
-  }, [])
+  }, [login])
 
   return (
     <div className='App'>
