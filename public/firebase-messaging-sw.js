@@ -13,7 +13,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
-const messaging = app.messaging.isSupported() ? firebase.messaging(app) : null;
+const messaging = firebase.messaging.isSupported() ? firebase.messaging(app) : null;
 
 if (messaging) {
     messaging.onBackgroundMessage(payload => {
