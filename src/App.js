@@ -12,6 +12,7 @@ function App() {
 
   const login = () => {
     signInAnonymously(getAuth()).then(user => console.log(user))
+    activateMessages()
   }
 
   const activateMessages = async () => {
@@ -25,7 +26,7 @@ function App() {
   }
 
   React.useEffect(() => {
-    login().then(() => activateMessages());
+    login();
     onMessage(messaging, message => {
       console.log("Message received: ", message);
       toast(message.notification.title)
