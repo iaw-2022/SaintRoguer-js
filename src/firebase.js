@@ -13,6 +13,6 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = isSupported() ? initializeApp(firebaseConfig) : null;
 const analytics = getAnalytics(app);
 export const messaging = isSupported() ? getMessaging(app) : null;
