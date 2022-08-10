@@ -26,18 +26,20 @@ function App() {
   }
 
   React.useEffect(() => {
-    login();
-    onMessage(messaging, message => {
-      console.log("Message received: ", message);
-      toast(message.notification.title)
-    })
+    if (messaging) {
+      login();
+      onMessage(messaging, message => {
+        console.log("Message received: ", message);
+        toast(message.notification.title)
+      })
+    }
   }, [])
 
   return (
     <div className='App'>
       <div className='gradient__bg'>
         <Navbar />
-        <ToastContainer />
+        {messaging ? <ToastContainer /> : <></>}
         <Header />
       </div>
       <Catalogue />
