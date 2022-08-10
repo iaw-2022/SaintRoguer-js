@@ -1,7 +1,7 @@
 import { Footer, Header, Catalogue, Imdb } from './containers';
 import { Navbar } from './components';
 import { getAuth, signInAnonymously } from "firebase/auth"
-import { getToken, onMessage } from "./firebase/messaging";
+import { getToken, onMessage } from "firebase/messaging";
 import { messaging } from './firebase';
 import './App.css';
 import { ToastContainer, toast } from 'react-toastify';
