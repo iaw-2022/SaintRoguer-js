@@ -27,16 +27,24 @@ function App() {
     else console.log("Something went wrong with your token");
   }
 
+  const onMessageListener = async () =>
+    new Promise((resolve) =>
+      (async () => {
+        const messagingResolve = await messaging;
+        onMessage(messagingResolve, (payload) => {
+          console.log('On message: ', messaging, payload);
+          resolve(payload);
+        });
+      })()
+    );
+
   React.useEffect(() => {
     if (messaging) {
       login();
-      
+
     }
-    onMessage(messaging, message => {
-        console.log("Message received: ", message);
-        toast(message.notification.title)
-      })
-  }, [login])
+    onMessageListener()
+  }, [login, onMessageListener]);
 
   return (
     <div className='App'>
