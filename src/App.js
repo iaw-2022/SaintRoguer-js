@@ -17,7 +17,9 @@ function App() {
 
   const activateMessages = async () => {
 
-    const token = await getToken(messaging, {
+    const messagingResolve = await messaging;
+
+    const token = await getToken(messagingResolve, {
       vapidKey: "BNi3xjbJKrRmuAKiaxovpTYtsQecnLGRScnaWmsjt3j2PSOLEXK88VkIPFZQCmJHAuSXdS2vg3t2k5vm_bqeq50"
     }).catch(err => console.log(err));
 
@@ -28,7 +30,8 @@ function App() {
   React.useEffect(() => {
     if (messaging) {
       login();
-      onMessage(messaging, message => {
+      const messagingResolve = await messaging;
+      onMessage(messagingResolve, message => {
         console.log("Message received: ", message);
         toast(message.notification.title)
       })
