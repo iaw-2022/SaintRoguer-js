@@ -30,8 +30,7 @@ function App() {
   React.useEffect(() => {
     if (messaging) {
       login();
-      const messagingResolve = await messaging;
-      onMessage(messagingResolve, message => {
+      onMessage(messaging, message => {
         console.log("Message received: ", message);
         toast(message.notification.title)
       })
