@@ -30,11 +30,12 @@ function App() {
   React.useEffect(() => {
     if (messaging) {
       login();
-      onMessage(messaging, message => {
+      
+    }
+    onMessage(messaging, message => {
         console.log("Message received: ", message);
         toast(message.notification.title)
       })
-    }
   }, [login])
 
   return (
