@@ -33,7 +33,7 @@ function App() {
         const messagingResolve = await messaging;
         onMessage(messagingResolve, (payload) => {
           console.log('On message: ', messaging, payload);
-          toast(payload.notification.title)
+          toast(payload.notification.title+" "+payload.notification.body)
           resolve(payload);
         });
       })()
