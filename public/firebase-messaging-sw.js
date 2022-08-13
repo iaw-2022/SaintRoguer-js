@@ -12,18 +12,17 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.messaging.isSupported() ? firebase.initializeApp(firebaseConfig) : null;
-const messaging = firebase.messaging.isSupported() ? firebase.messaging(app) : null;
+const app = firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging(app);
 
-if (messaging) {
-    messaging.onBackgroundMessage(payload => {
-        console.log("You have a new notification!");
-        const notificationTitle = payload.notification.title;
-        const notificationOptions = {
-            body: payload.notification.body,
-            icon: "/logo.png"
-        }
 
-        return self.registration.showNotification(notificationTitle, notificationOptions);
-    })
-}
+messaging.onBackgroundMessage(payload => {
+    console.log("You have a new notification!");
+    const notificationTitle = payload.notification.title;
+    const notificationOptions = {
+        body: payload.notification.body,
+        icon: "/logo.png"
+    }
+
+    return self.registration.showNotification(notificationTitle, notificationOptions);
+})

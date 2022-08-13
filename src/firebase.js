@@ -13,6 +13,18 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = isSupported() ? initializeApp(firebaseConfig) : null;
+const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-export const messaging = isSupported() ? getMessaging(app) : null;
+export const messaging = (async () => {
+    try {
+        const isSupportedBrowser = await isSupported();
+        if (isSupportedBrowser) {
+            return getMessaging(app);
+        }
+        console.log('Firebase does not support this browser');
+        return null;
+    } catch (err) {
+        console.log(err);
+        return null;
+    }
+})();
