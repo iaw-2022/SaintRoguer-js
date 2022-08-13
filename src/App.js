@@ -33,6 +33,7 @@ function App() {
         const messagingResolve = await messaging;
         onMessage(messagingResolve, (payload) => {
           console.log('On message: ', messaging, payload);
+          toast(payload.notification.title)
           resolve(payload);
         });
       })()
@@ -41,9 +42,8 @@ function App() {
   React.useEffect(() => {
     if (messaging) {
       login();
-
     }
-    onMessageListener()
+    onMessageListener();
   }, [login, onMessageListener]);
 
   return (
